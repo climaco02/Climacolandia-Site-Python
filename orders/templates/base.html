@@ -1,26 +1,36 @@
-{% load staticfiles%}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-	<title>Climacolândia</title>
-    <link href="{% static "styles/bootstrap.css" %}" rel="stylesheet">
-    <link href="{% static "styles/main.css" %}" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-	    <div class="header">
-	        <ul class="nav nav-pills pull-right">
-	            <li class=""><a href="{% url 'index' %}">Nossos Trabalhos</a></li>
-	            <li class=""><a href="/logout/">Realizar Pedido</a></li>
-	        </ul>
-	        <h3 class="text-muted">Climacolândia</h3>
-	    </div>
+    <head>
+        <meta charset="utf-8">
+        <title>Climacolândia</title>
+        <link href="{% static "styles/bootstrap.css" %}" rel="stylesheet">
+        <link href="{% static "styles/bootstrap-theme.css" %}" rel="stylesheet">
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.8&appId=1643538205943620";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="container">
+            <nav>
+                <div class="header">
+                    <ul class="nav nav-pills pull-right">
+                        <li class=""><a href="{% url 'index' %}">Nossos Trabalhos</a></li>
+                        <li class=""><a href="/logout/">Faça um pedido</a></li>
+                    </ul>
+                    <h3 class="text-muted"><a href="{% url 'index' %}">Climacolândia</a></h3>
+                </div>
+            </nav>
 
-        <div class="row content">
-            {% block body%}
-            {% endblock %}
+            <div class="row content">
+                {% block body%}
+                {% endblock %}
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
