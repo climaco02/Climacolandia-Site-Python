@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block body %}
+<form class="form-signin" action="{% url 'order' %}" method="post">
+
+    {% csrf_token %}
+
+
+    <div class="col-lg-12">
+        <h2 class="form-signin-heading">Faça sua encomenda conosco</h2>
+
+        <hr>
+
+        <p>Nos diga qual doce você quer! Como por exemplo: Bolo, bombom, alfajor, docinhos, etc.</p>
+        <input type="text" id="id_type_sweet" name="type_sweet" class="form-control" placeholder="Qual doce você quer? :)" value="{{form.type_sweet.value}}" required autofocus>
+
+        <hr \>
+
+        <p>Agora nos fale os detalhes do que você quer! Conte-nos por exemplo do recheio, sabor, cobertura, etc.</p>
+        <textarea type="textarea" id="id_description" style="resize: none;" rows="5" name="description" class="form-control" value="{{form.description.value}}" placeholder="Conte-nos detalhes sobre o seu pedido"></textarea>
+        <hr/>
+
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Enviar Pedido</button>
+    </div>
+
+</form>
+{% endblock %}
