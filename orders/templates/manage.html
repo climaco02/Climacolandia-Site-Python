@@ -1,0 +1,48 @@
+{% extends "base_manage.html" %}
+{% block body %}
+<h2 class="form-signin-heading">Pedidos recebidos</h2>
+<div class="panel panel-default">
+    {% with total_orders=orders.count total_orders_concluded=orders.concluded.count %}
+        {% if total_orders %}
+            <div class="panel-heading">
+                <strong>Você tem {{ total_orders }} pedido{{ total_orders|pluralize}} pendente{{ total_orders|pluralize}}</strong>  
+            </div>
+            <ul class="list-group">
+                {% for order in orders.all %}
+                    <li class="list-group-item">
+                        <a href="{% url 'show' order.id %}">{{ order.type_sweet }}</a> 
+                        <a href="{% url 'conclude' order.id %}" class="pull-right ">concluído</a><br>
+                        <a href="{% url 'exclude' order.id %}" class="pull-right ">excluir</a><br>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}  
+            <div class="panel-body">
+                <p>Nenhum pedido recebido :/</p>
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+
+<h2 class="form-signin-heading">Pedidos concluidos</h2>
+<div class="panel panel-default">
+    {% with total_orders_concluded=orders_concluded.count %}
+        {% if total_orders_concluded %}
+            <div class="panel-heading">
+                <strong>Você concluiu {{ total_orders_concluded }} pedido{{ total_orders_concluded|pluralize}}</strong>  
+            </div>
+            <ul class="list-group">
+                {% for order in orders_concluded.all %}
+                    <li class="list-group-item">
+                        <a href="{% url 'show_concluded' order.id %}">{{ order.type_sweet }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}  
+            <div class="panel-body">
+                <p>Nenhum pedido concluido :/</p>
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}
