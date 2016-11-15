@@ -1,0 +1,19 @@
+{% extends "base_manage.html" %}
+{% block body %}
+<div class="row">
+	<div class="col-lg-12">
+		<h2 style="margin-top: 0">Pedido de {{ order.type_sweet }}</h2>
+		<address>
+			<p>Descrição do pedido: {{ order.description }}</p><br>
+		</address>
+
+		{% if already_concluded %}
+			<div class="well well-sm">Você já conluiu esse pedido! :)</div>
+		{% else %}
+        	<a href="{% url 'conclude' order.id %}" class="pull-right list-group-item">concluído</a>
+            <a href="{% url 'exclude' order.id %}" class="pull-right list-group-item">excluir</a>
+		{% endif %}
+
+	</div>
+</div>
+{% endblock %}
