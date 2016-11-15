@@ -6,6 +6,7 @@
         <title>Climacolândia</title>
         <link href="{% static "styles/bootstrap.css" %}" rel="stylesheet">
         <link href="{% static "styles/main.css" %}" rel="stylesheet">
+        <link href="{% static "img/circular.png" %}" rel="icon">
     </head>
     <body>
         <div id="fb-root"></div>
@@ -23,7 +24,10 @@
                         <li class=""><a href="{% url 'index' %}">Nossos Trabalhos</a></li>
                         <li class=""><a href="{% url 'order' %}">Faça um pedido</a></li>
                     </ul>
-                    <h3 class="text-muted"><a href="{% url 'index' %}">Climacolândia</a></h3>
+                    <h3 class="text-muted"><a href="{% url 'index' %}">
+                        <img width="75" src="{% static "img/circular.png" %}">
+                        Climacolândia Doces
+                    </a></h3>
                 </div>
             </nav>
 
